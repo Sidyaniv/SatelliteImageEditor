@@ -1,6 +1,7 @@
 import requests
 
-from src.enums.global_enums import WrongStatusCode
+from src.enums.global_enums import WrongStatusCode,GlobalErrorMessages
+
 
 class Image():
 
@@ -11,29 +12,31 @@ class Image():
 
     def get_image(self):
 
-        url = f'http://127.0.0.1:5000/v5000/earth/imagery/?lon={self.long}&lat={self.lat}&date={self.date}&dim=0.32'
+        url = f"http://127.0.0.1:5000/v5000/earth/imagery/?lon={self.long}&lat={self.lat}&date={self.date}&dim=0.32"
+        # info_json = f"http://127.0.0.1:5000/v5000/earth/assets/?lon={self.long}&lat={self.lat}&begin=2014-07-01&end=2014-09-01&dim=0.32"
+        # image2 = requests.get(info_json)
         image = requests.get(url)
         return image
+    
 
     def download_image(self, filename):
 
         image = Image.get_image(self)
         
-        if not ('iterator' in locals()):
-            iterator = 1
-        
-        
-        if image.status_code == 200:
-            with open(f"images/{filename}_{iterator}.png", 'wb') as f:
-                f.write(image.content)
-            iterator += 1
-        else:
-            raise WrongStatusCode(image.status_code)
+        try:
+            if image.status_code == 200:
+                with open(f"{filename}".jpeg, 'wb') as f:
+                    f.write(image.content)
+            else:
+                raise WrongStatusCode(image.status_code)
+        except FileNotFoundError:
+            print(GlobalErrorMessages.FILE_NOT_FOUND)
+        except IOError:
+            print(GlobalErrorMessages.READ_FILE_ERROR)
 
 
-dataset = Image(99.21, 29.67, '2018-07-01')
+dataset = Image(120.21, 70.67, '2010-07-01')
 image = dataset.download_image('image')
-
 
 
 # requests.get('http://127.0.0.1:5000/v5000/imagery/?lon=61.128185&lat=-129.597130&date= 2018-11-20')
