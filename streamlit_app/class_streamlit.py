@@ -3,10 +3,18 @@ import streamlit as st
 from get_data import str_to_date
 
 class Streamlit():
+    """
+    Класс для работы с библиотекой streamlit. 
+    Создан лдя того, чтобы не загромождать главный файл приложения
+    """
 
     def __init__(self) -> None:
         pass
 
+    def make_title(self, text):
+        name = st.title(body=text)
+        return name
+    
     def make_subheader(self, text):
         name = st.subheader(body=text)
         return name
@@ -31,3 +39,5 @@ class Streamlit():
         name = st.form_submit_button(label)
         return name
     
+    def male_slider(self, label, minimum, maximum, standart):
+        name = st.slider(label=label, min_value=minimum, max_value=maximum, value=standart)    
