@@ -9,6 +9,7 @@ class GlobalErrorMessages():
     FILE_NOT_FOUND = "Файл не найден"
     READ_FILE_ERROR = "Ошибка при чтении файла"
 
+
 class WrongStatusCode(Exception):
 
     def __init__(self, status_code):

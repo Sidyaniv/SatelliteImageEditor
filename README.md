@@ -1,21 +1,41 @@
-# Earth-Imagery-API
+<h1 align="center">Автоматизированный поиск и обработка спутниковых снимков с помощью Earth-Imagery-API и OpenCV.l</a>  
 
-## Description
-This repository contains a flask API that provides satellite imagery. It is designed to be very simple and easy to use with minimal functionality and is provided to the public through api.nasa.gov. It focuses on one Earth imagery product, Landsat 8.
 
-#### Purpose
-While there are many ways NASA and other government agencies provide satellite imagery to the public, these are often more fully featured and as a result more complex to use. This API is built to have a very basic intuitive interface and to be found easily on api.nasa.gov. It is designed for those just getting started with satellite imagery and APIs. It can server as a first step to using more complex imagery services.
+## Описание проекта:
+Проект направлен на создание автоматизированной системы для поиска спутниковых снимков и их последующей обработки с целью изменения яркости и контрастности. Для достижения этой цели используется Earth-Imagery-API для загрузки спутниковых снимков и библиотека OpenCV для обработки изображений.
 
-#### History & Why Open Sourced
-The earth imagery API has existed as an option on api.nasa.gov for several years. Many people have built demos using it or integrated it into their applications. We don't recommend using it in production. It is shared mostly as a very easy and feature sparse starting point for learning.
+#### Шаги проекта:
 
-As such, we intend to keep the API endpoints as they are without changes that would disrupt previous work. 
+1. Поиск спутниковых снимков:
 
-We are open sourcing this repository in order to help others see how it works. We also expect others might detect problems and submit issues or pull requests of fixes in the same way users have done for <a href="https://github.com/nasa/apod-api">APOD-API</a>. 
+- Использование Earth-Imagery-API для запроса спутниковых снимков по заданным параметрам, таким как координаты местности, дата и время.
+- Получение спутниковых снимков в формате изображения.
+2. Обработка изображений:
 
-## Where Data Comes From
+- Загрузка полученного спутникового снимка с использованием OpenCV.
+- Применение методов OpenCV для изменения яркости и контрастности изображения в соответствии с заданными параметрами.
+3. Отображение результатов:
 
-Under the hood, this API leverages a moderately complex API, Google Earth Engine. Google Earth Engine in turn, leverages NASA APIs to get the satellite imagery it provides to endusers.
+- Вывод исходного и обработанного спутниковых снимков на экран для визуальной оценки изменений.
+- Возможность сохранения обработанных изображений для дальнейшего использования.
+
+#### Технологии:
+- Earth-Imagery-API: API для доступа к спутниковым изображениям с Земли.
+- OpenCV: Библиотека компьютерного зрения для обработки изображений.
+- Streamlit: Библиотека , предназначенная для разработки пользовательского интерфейса для веб-приложений на основе данных.
+- Python: Язык программирования для разработки проекта.
+
+##### Инструкция
+#### 1. Запуск 
+## 1.1 Установка зависимостей 
+Установить все зависимтости из  ./flaskproject/requirements.txt:
+`pip install -r requirements.txt`
+#### ВАЖНО
+В проекте использовался Python версии 3.7 и pip 10.0.0
+В случае установки других версий `python` и `pip`, не могу дать гарантии запуска.
+Сроки, по некоторым причинам (задание на тестировщика), были ограничены. Эту проблему я обнаружил, спустя долгое время возни с Earth-Imagery-API. Времени на смену проекта было мало, поэтому решил оставить всё, как есть.
+## 1.2 Установка зависимостей 
+
 
 ## Language(s) used by the software
 Mostly Python with a little JavaScript and HTML.
