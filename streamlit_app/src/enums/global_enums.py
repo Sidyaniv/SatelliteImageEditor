@@ -1,13 +1,21 @@
 from enum import Enum
 
 class GlobalErrorMessages():
-
+    """Класс для работы с ошибками и исключениями"""
     def __init__(self) -> None:
         pass
 
     WRONG_STATUS_CODE = "Ответ от сервера неверный / не получен."
+    FILE_NOT_FOUND = "Файл не найден"
+    READ_FILE_ERROR = "Ошибка при чтении файла"
+
 
 class WrongStatusCode(Exception):
+    """Кастомное исключение при некорректном ответе от сервера 
+
+    Args:
+        Exception (class): класс, относительно которого мы создаём экземпляр
+    """
 
     def __init__(self, status_code):
         self.status_code = status_code
